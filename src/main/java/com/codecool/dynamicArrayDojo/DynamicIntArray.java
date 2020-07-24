@@ -34,6 +34,11 @@ public class DynamicIntArray {
 
     @Override
     public String toString() {
-        return "Implement me plz.. Pretty plz..";
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < index; i++){
+            builder.append(' ');
+            builder.append(array[i]);
+        }
+        return builder.toString();
     }
 }
