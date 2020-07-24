@@ -22,6 +22,12 @@ public class DynamicIntArray {
 
     public void add(int number){
 
+        if(index >= sizeOfArray) {
+            increaseArray();
+        }
+        array[index] = number;
+
+        index++;
     }
 
     public void remove(int indexOfNumber){
@@ -40,5 +46,9 @@ public class DynamicIntArray {
             builder.append(array[i]);
         }
         return builder.toString();
+    }
+
+    private void increaseArray(){
+        this.array = Arrays.copyOf(array, sizeOfArray*2);
     }
 }
