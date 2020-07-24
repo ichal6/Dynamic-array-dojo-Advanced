@@ -30,6 +30,10 @@ public class DynamicIntArray {
     }
 
     public void remove(int indexOfNumber){
+        if(indexOfNumber >= index || indexOfNumber < 0){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
         try{
             for (int i = indexOfNumber; i < index; i++) {
                 array[i] = array[i+1];
