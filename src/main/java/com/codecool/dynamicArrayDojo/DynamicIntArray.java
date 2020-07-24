@@ -21,7 +21,6 @@ public class DynamicIntArray {
     }
 
     public void add(int number){
-
         if(index >= sizeOfArray) {
             increaseArray();
         }
@@ -35,7 +34,14 @@ public class DynamicIntArray {
     }
 
     public void insert(int elementsToReplace, int newElements){
-
+        for(int i = 0; i < index; i++){
+            if(array[i] == elementsToReplace){
+                addInCenterArray(i, newElements);
+                array[i] = newElements;
+                return;
+            }
+        }
+        add(newElements);
     }
 
     @Override
@@ -48,7 +54,16 @@ public class DynamicIntArray {
         return builder.toString();
     }
 
+    private void addInCenterArray(int indexInsert ,int newElements){
+        this.array = Arrays.copyOf(array, sizeOfArray+1);
+        for (int i = index - 1; i >= indexInsert; i--) {
+            array[i+1] = array[i];
+        }
+        index++;
+    }
+
     private void increaseArray(){
         this.array = Arrays.copyOf(array, sizeOfArray*2);
+        sizeOfArray = sizeOfArray*2;
     }
 }
