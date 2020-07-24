@@ -30,7 +30,14 @@ public class DynamicIntArray {
     }
 
     public void remove(int indexOfNumber){
+        try{
+            for (int i = indexOfNumber; i < index; i++) {
+                array[i] = array[i+1];
+            }
+        }catch(IndexOutOfBoundsException ignored){
 
+        }
+        index--;
     }
 
     public void insert(int elementsToReplace, int newElements){
